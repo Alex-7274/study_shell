@@ -192,3 +192,77 @@ if [[ $pid =~ ^[0-9]+$ ]];then
 else
     echo "please enter right pid"
 fi
+
+
+
+#编写一个Shell脚本，列出当前目录下所有的文件和文件夹，并将结果保存到一个名为log.txt的文件中。
+ls
+echo "`ls`" >> log.txt >> log.txt
+
+
+
+#
+cat text_file.txt | tr '[:upper:]' '[:lower:]' | tr -cs '[:alpha:]' '\n' | sort | uniq -c | sort -nr | head -n 10 > top_words.txt
+
+
+
+
+# 编写一个Shell脚本，实现以下功能的备份管理系统：
+# 允许用户选择要备份的目录或文件。
+# 将选定的目录或文件压缩为.tar.gz格式，并保存到指定的备份目录中。
+# 备份文件名应包含备份的日期和时间信息，以便于识别和管理。
+# 提供选项让用户能够恢复某个备份到指定目录。
+# 提供选项让用户能够删除某个备份文件。
+backup_dir="/e/Develop/shelltest/backups"  # 定义备份目录
+mkdir -p "$backup_dir"  # 确保备份目录存在
+# 显示菜单
+echo "备份管理系统"
+echo "1. 创建备份"
+echo "2. 恢复备份"
+echo "3. 删除备份"
+echo "4. 退出"
+read -p "请选择一个操作 [1-4]: " action
+
+case $action in
+    1)
+        read -p "请输入要备份的文件或目录的路径: " source_path
+        if [ -e "$source_path" ]; then
+            # 生成备份文件名，包含日期和时间
+            timestamp=$(date +"%Y%m%d-%H%M%S")
+            filename=$(basename "$source_path")
+            backup_file="$backup_dir/${filename}-${timestamp}.tar.gz"
+            
+            # 创建备份
+            tar -czf "$backup_file" "$source_path"
+            echo "备份已创建: $backup_file"
+        else
+            echo "指定的文件或目录不存在: $source_path"
+        fi
+        ;;
+    2)
+        echo "可用的备份文件:"
+        ls "$backup_dir"
+        read -p "请输入要恢复的备份文件名: " backup_file
+        read -p "请输入恢复到的目标目录: " target_dir
+        
+        # 恢复备份
+        tar -xzf "$backup_dir/$backup_file" -C "$target_dir"
+        echo "备份已恢复到: $target_dir"
+        ;;
+    3)
+        echo "可用的备份文件:"
+        ls "$backup_dir"
+        read -p "请输入要删除的备份文件名: " backup_file
+        
+        # 删除备份
+        rm -f "$backup_dir/$backup_file"
+        echo "备份已删除: $backup_file"
+        ;;
+    4)
+        echo "退出程序."
+        exit 0
+        ;;
+    *)
+        echo "无效的选项: $action"
+        ;;
+esac
