@@ -18,3 +18,30 @@ two hours later is 17:40:12
 E:/Git42%
 C:66%
 D:38%
+Access denied. Option -c requires administrative privileges.
+Access denied. Option -c requires administrative privileges.
+
+Pinging www.a.shifen.com [39.156.66.18] with 32 bytes of data:
+Reply from 39.156.66.18: bytes=32 time=26ms TTL=51
+Reply from 39.156.66.18: bytes=32 time=17ms TTL=51
+Reply from 39.156.66.18: bytes=32 time=12ms TTL=51
+Reply from 39.156.66.18: bytes=32 time=11ms TTL=51
+
+Ping statistics for 39.156.66.18:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 11ms, Maximum = 26ms, Average = 16ms
+
+Pinging www.a.shifen.com [39.156.66.18] with 32 bytes of data:
+Reply from 39.156.66.18: bytes=32 time=18ms TTL=51
+
+Ping statistics for 39.156.66.18:
+    Packets: Sent = 1, Received = 1, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 18ms, Maximum = 18ms, Average = 18ms
+
+Pinging 0.1.226.64 with 32 bytes of data:
+PING: transmit failed. General failure. 
+
+Ping statistics for 0.1.226.64:
+    Packets: Sent = 1, Received = 0, Lost = 1 (100% loss),

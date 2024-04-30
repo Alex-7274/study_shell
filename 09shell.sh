@@ -266,3 +266,11 @@ case $action in
         echo "无效的选项: $action"
         ;;
 esac
+
+
+#判断是否能ping通一个网络地址
+if ping -n 1 "www.baidu.com" >> log.txt; then
+    echo "www.baidu.com is alive"
+else
+    echo "www.baidu.com is not alive"
+fi
